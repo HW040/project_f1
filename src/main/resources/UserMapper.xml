@@ -1,0 +1,34 @@
+<mapper namespace="green.project_1.User.UserMapper">
+
+    <!-- 리더 번호 조회 쿼리 -->
+    <select id="leaderNo" resultType="long">
+        SELECT leader_no
+        FROM projects
+        WHERE project_no = #{projectNo}
+    </select>
+
+    <delete id="leaderNo" parameterType="int">
+        DELETE FROM users WHERE leader_no = #{leaderNo}
+    </delete>
+
+    <select id="leaderNo" resultType="long">
+        SELECT leader_no
+        FROM project
+        WHERE project_no = #{projectNo}
+    </select>
+
+    <!-- 스케줄 번호로 실행자 번호 가져오기 -->
+    <select id="scheduleUserNoFromSchedule" resultType="long">
+        SELECT user_no
+        FROM schedule
+        WHERE schedule_no = #{scheduleNo}
+    </select>
+
+    <!-- 프로젝트 번호로 실행자 번호 가져오기 -->
+    <select id="scheduleUserNoFromProject" resultType="long">
+        SELECT user_no
+        FROM project_user
+        WHERE project_no = #{projectNo}
+    </select>
+
+</mapper>
